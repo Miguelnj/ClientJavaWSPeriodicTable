@@ -1,6 +1,6 @@
 package clientjavawsperiodictable;
 
-import WSPeriodicTableClasses.ElementSymbol;
+import WSPeriodicTableClasses.NewDataSet1;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,35 +51,68 @@ public class ClientJavaWSPeriodicTable {
                 + "get the symbol");
         eleInput = scanner.next();
         
-       /*Serializer serializer = new Persister();
-        ElementSymbol eSymbol;
         try {
-            eSymbol = serializer.read(ElementSymbol.class, 
-                    getElementSymbol(eleInput));
-            System.out.println(eSymbol.getSymbol());
+            Serializer serializer = new Persister();
+            String source = getAtomicNumber(eleInput);
+            NewDataSet1 NewDataSet = new NewDataSet1();
+            serializer.read(NewDataSet,source);
+            
+            System.out.println("Element Symbol is: " + NewDataSet.getTable().getSymbol());
+            
         } catch (Exception ex) {
-            Logger.getLogger(ClientJavaWSPeriodicTable.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        System.out.println(getElementSymbol(eleInput));
+            System.out.println("EXCEPTION OCURRED");
+        }
     }
     
     private void runAtoms(){
+        System.out.println("Introduce the name of the element in order to "
+                + "get the element name");
+        eleInput = scanner.next();
+        
         Serializer serializer = new Persister();
+        String source = getAtomicNumber(eleInput);
+        NewDataSet1 NewDataSet = new NewDataSet1();
+        try {
+            serializer.read(NewDataSet,source);
+        } catch (Exception ex) {
+            Logger.getLogger(ClientJavaWSPeriodicTable.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        
-        System.out.println(getAtoms());
+        System.out.println(NewDataSet.getTable().getElementName());
     }
     private void runAtomicNumber(){
         System.out.println("Introduce the name of the element in order to "
-                + "get the symbol");
+                + "get the Atomic Number");
         eleInput = scanner.next();
-        System.out.println(getAtomicNumber(eleInput));
+        
+        Serializer serializer = new Persister();
+        String source = getAtomicNumber(eleInput);
+        NewDataSet1 NewDataSet = new NewDataSet1();
+        try {
+            serializer.read(NewDataSet,source);
+        } catch (Exception ex) {
+            Logger.getLogger(ClientJavaWSPeriodicTable.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+     
+        System.out.println(NewDataSet.getTable().getAtomicNumber());
     }
     private void runAtomicWeight(){
         System.out.println("Introduce the name of the element in order to "
-                + "get the symbol");
+                + "get the element name");
         eleInput = scanner.next();
-        System.out.println(getAtomicWeight(eleInput));
+        
+        Serializer serializer = new Persister();
+        String source = getAtomicNumber(eleInput);
+        NewDataSet1 NewDataSet = new NewDataSet1();
+        try {
+            serializer.read(NewDataSet,source);
+        } catch (Exception ex) {
+            Logger.getLogger(ClientJavaWSPeriodicTable.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+     
+        System.out.println(NewDataSet.getTable().getAtomicWeight());
     }
     
     private void menu(){
